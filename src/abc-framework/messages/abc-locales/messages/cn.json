@@ -1,0 +1,10 @@
+{
+  "application.title"       : "ABC",
+  "application.description" : "IOS Android Native, H5 and PC",
+  "application.language"    : "CN",
+
+  "home.title" : "首页",
+  "home.subTitle" : "测试欢迎光临",
+  "messages.title":"测试首页"
+
+}

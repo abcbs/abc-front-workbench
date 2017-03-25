@@ -1,0 +1,173 @@
+// These will be replaced with the corresponding native CSS variables
+// when CSS native variables will be supported in all major browsers.
+// http://caniuse.com/#search=css%20var
+@include set_css_variable_font_size(18pt);
+@include set_css_variable_header_height(calc(var(--modular-grid-unit) * 7));
+@include set_css_variable_content_section_margin(calc(var(--modular-grid-unit) * 2));
+
+@include columns(l);
+
+.language button
+{
+	font-size : 18pt;
+}
+
+header
+{
+	text-align: left;
+}
+
+.logo
+{
+	display        : inline-block;
+	vertical-align : bottom;
+
+	margin-left  : 0;
+	margin-right : 2em;
+
+	// in firefox there is a bug when it goes invisible for 26pt
+	font-size   : 22pt;
+}
+
+.menu
+{
+	display: inline-block;
+
+	li
+	{
+		display: inline-block;
+	}
+
+	li:not(:last-child)
+	{
+		margin-right: 0.4em;
+	}
+}
+
+.menu-item
+{
+	padding-left    : calc(var(--modular-grid-unit) * 2);
+	padding-right   : calc(var(--modular-grid-unit) * 2);
+
+	padding-top    : var(--modular-grid-unit);
+	padding-bottom : var(--modular-grid-unit);
+
+	// padding-top : var(--header-vertically-centered-text-margin-top);
+
+	// border-bottom-width : 0.12em;
+	// border-bottom-color : transparent;
+	// border-bottom-style : solid;
+}
+
+.nav-collapsible
+{
+	// overwrites XS size settings
+	display: none !important;
+}
+
+.language
+{
+	right : 0.5em;
+
+	margin-top   : 0.25em;
+	margin-right : 0.5em;
+
+	.dropdown-item-selected
+	{
+		text-align : right;
+		border     : none;
+	}
+
+	&, .dropdown-item-list li, .dropdown-item, .dropdown-item-selected
+	{
+		line-height : normal;
+	}
+
+	.dropdown-arrow
+	{
+		// overwrites inline css
+		margin-bottom : 0.1em !important;
+	}
+
+	.dropdown-item
+	{
+		padding-top    : 0.2em;
+		padding-bottom : 0.2em;
+	}
+}
+
+.authentication-form, .registration-form
+{
+	width : calc(var(--modular-grid-unit) * 84);
+}
+
+header > .nav-widescreen
+{
+	display: inline-block;
+}
+
+header
+{
+	text-align: left;
+	justify-content : flex-start;
+}
+
+.menu-icon
+{
+	display : none;
+}
+
+.menu
+{
+	margin: 0;
+
+	> li
+	{
+		display: inline-block;
+
+		&:first-child
+		{
+			padding-top: 0;
+		}
+
+		&:last-child
+		{
+			padding-bottom: 0;
+		}
+	}
+}
+
+.user-profile
+{
+	input[type="text"]
+	{
+		width: calc(var(--modular-grid-unit) * 50);
+	}
+}
+
+.user-profile__actions
+{
+	.button
+	{
+		// overwrites M size settings
+		display: inline-block !important;
+
+		&:not(:first-child)
+		{
+			margin-left: calc(var(--modular-grid-unit) * 3);
+		}
+	}
+}
+
+.content-section
+{
+	border-radius : var(--border-radius);
+	// box-shadow    : var(--shadow);
+	box-shadow: 0 1px 0 0 var(--gray-color-lighter-), 0 0 0 1px var(--gray-color-light);
+
+	.content-section-header
+	{
+		border-top-left-radius  : var(--border-radius);
+		border-top-right-radius : var(--border-radius);
+	}
+}

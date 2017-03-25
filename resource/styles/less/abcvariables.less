@@ -1,0 +1,590 @@
+//
+// Variables
+// --------------------------------------------------
+//== Colors
+//
+//## Gray and brand colors for use across Bootstrap.
+
+@gray-base:              #000;
+@gray-darker:            lighten(@gray-base, 13.5%); // #222
+@gray-dark:              lighten(@gray-base, 20%);   // #333
+@gray:                   lighten(@gray-base, 33.5%); // #555
+@gray-light:             lighten(@gray-base, 46.7%); // #777
+@gray-lighter:           lighten(@gray-base, 93.5%); // #eee
+
+@brand-primary:         darken(#428bca, 6.5%); // #337ab7
+@brand-success:         #5cb85c;
+@brand-info: rgba(205, 255, 193, 0);
+@brand-warning:         #f0ad4e;
+@brand-danger:          #d9534f;
+
+
+//== Scaffolding
+//
+//## Settings for some of the most global styles.
+
+//** Background color for `<body>`.
+@body-bg: #f9ffee;
+//** Global text color on `<body>`.
+@text-color:            @gray-dark;
+
+//** Global textual link color.
+@link-color:            @brand-primary;
+//** Link hover color set via `darken()` function.
+@link-hover-color:      darken(@link-color, 15%);
+//** Link hover decoration.
+@link-hover-decoration: underline;
+
+@font-size-base:          14px;
+@font-size-large:         ceil((@font-size-base * 1.25)); // ~18px
+@font-size-small:         ceil((@font-size-base * 0.85)); // ~12px
+
+@font-size-h1:            floor((@font-size-base * 2.6)); // ~36px
+@font-size-h2:            floor((@font-size-base * 2.15)); // ~30px
+@font-size-h3:            ceil((@font-size-base * 1.7)); // ~24px
+@font-size-h4:            ceil((@font-size-base * 1.25)); // ~18px
+@font-size-h5:            @font-size-base;
+@font-size-h6:            ceil((@font-size-base * 0.85)); // ~12px
+
+
+
+//** Disabled cursor for form controls and buttons.
+@cursor-disabled:                not-allowed;
+
+//-- Z-index master list
+
+@zindex-navbar:            1000;
+@zindex-dropdown:          1000;
+@zindex-popover:           1060;
+@zindex-tooltip:           1070;
+@zindex-navbar-fixed:      1030;
+@zindex-modal-background:  1040;
+@zindex-modal:             1050;
+
+
+//== Badges
+//
+//##
+@abc-badge-color: #ff0099;
+@abc-label-background: #fff;
+//== Labels
+//
+//##
+//** Default label text color
+@abc-label-color: @gray-base;
+
+// Extra small screen / phone
+//** Deprecated `@screen-xs` as of v3.0.1
+@screen-xs:                  480px;
+//** Deprecated `@screen-xs-min` as of v3.2.0
+@screen-xs-min:              @screen-xs;
+//** Deprecated `@screen-phone` as of v3.0.1
+@screen-phone:               @screen-xs-min;
+
+// Small screen / tablet
+//** Deprecated `@screen-sm` as of v3.0.1
+@screen-sm:                  768px;
+@screen-sm-min:              @screen-sm;
+//** Deprecated `@screen-tablet` as of v3.0.1
+@screen-tablet:              @screen-sm-min;
+
+// Medium screen / desktop
+//** Deprecated `@screen-md` as of v3.0.1
+@screen-md:                  992px;
+@screen-md-min:              @screen-md;
+//** Deprecated `@screen-desktop` as of v3.0.1
+@screen-desktop:             @screen-md-min;
+
+// Large screen / wide desktop
+//** Deprecated `@screen-lg` as of v3.0.1
+@screen-lg:                  1200px;
+@screen-lg-min:              @screen-lg;
+//** Deprecated `@screen-lg-desktop` as of v3.0.1
+@screen-lg-desktop:          @screen-lg-min;
+
+// So media queries don't overlap when required, provide a maximum
+@screen-xs-max:              (@screen-sm-min - 1);
+@screen-sm-max:              (@screen-md-min - 1);
+@screen-md-max:              (@screen-lg-min - 1);
+
+//pad2竖屏 767~991
+@screen-pad2v:                    @screen-sm;
+@screen-pad2v-max:               @screen-sm-max;
+
+
+//pad,768为pad竖屏
+@screen-pad-md:                767px ;
+@screen-pad-md-max:            991px ;
+
+//992~1199
+@screen-pad2h:                    @screen-md;//992
+@screen-pad2h-max:                @screen-md-max;//1199
+
+@screen-lg-md:                1200px;
+@screen-lg-mdx:               1439px;
+
+//chrome
+@screen-lg-chrome:            1440px;
+@screen-lg-chromex:           1899px;
+
+//ie,firefix
+@screen-lg-xl:                1900px;
+@screen-lg-xlx:               2000px;
+@screen-lg-max:               2001px;
+
+//台式机
+@screen-dt:                    2001px;
+@screen-dt-max:                3000px;
+
+//手机竖屏
+@screen-vertical-max:          589px;//xp 手机横屏
+@screen-vertical-min:          100px;//xp 手机横屏
+//px适用于6plus等横屏的配置
+@screen-xpmin:                  590px;//xp 手机横屏
+@screen-xpmax:                  766px;//
+//////////////////////////////////////////////////////
+//手机：iphone-4s：320~480 2 3.5寸
+//      iphone-6plus:414~736 3
+//      gt-l9100G: 320~533 1.5
+//      gt:360~640 1.5 5.8寸
+//      honor:scl:360~598 2
+//
+// samsung:g6:360~640 4 5寸
+//5.8寸,三星GT-I9152,960 540 dpr:1.5; 360~640
+//5寸，oppo 360/640 1.5
+//@screen-sm 768
+//苹果6 plus 5.5英寸 ,横屏
+
+//pad竖屏为sm
+//pad横屏为md
+@screen-xp:                     730px;//apple-6plus
+@screen-xpx:                    767px;//apple-6plus
+
+@screen-xpv:                     400px;//apple-6plus 竖屏
+@screen-xpvx:                    420px;//apple-6plus 竖屏
+
+//手机横屏
+@screen-min-xsm: 299px;
+//手机竖屏，如iphone4s 320， gt-l9100G:320/480
+@screen-min-v: 300px;
+@screen-min-vmax: 349px;
+
+//@media (min-width: 425px) and (max-width: 479px)
+//手机横屏，介于横竖屏之间，主要用于区别px的方式,4s横屏显示，4s为480
+//手机横屏，如iphone4s 480， gt-l9100G:533
+//这里包括iphone6se-568,iphone5-568
+@boot-xs-v:                     421px;
+@boot-xs-vmax:                  589px;
+
+//5寸，三星S6，华为SCL，1280/720实测进行, 理论上应当包含6p为竖屏
+@screen-sclv:                   350px;//5寸，三星S6，华为SCL，1280/720/竖屏
+@screen-sclvx:                  399px;//5寸，三星S6，华为SCL，1280/720/竖屏
+//5.8寸,三星GT-I9152,960 540 dpr:1.5;
+//5寸，oppo 360/640 1.5
+@screen-gtv:                      350px;//5.8寸,三星GT-I9152,960 540 dpr:1.5/竖屏
+@screen-gtvx:                     399px;//5.8寸,三星GT-I9152,960 540 dpr:1.5/竖屏
+
+//三星S6，华为SCL，1280/720实测进行, 理论上应当包含6p为横屏，667
+@screen-scl:                     590px;//5寸下线
+@screen-sclx:                    767px;//5寸上线
+
+@screen-gt:                       590px;//5.8寸,三星GT-I9152,960 540 dpr:1.5/横屏
+@screen-gtx:                      767px;//5.8寸,三星GT-I9152,960 540 dpr:1.5/横屏
+
+@screen-max: 12001px;
+
+/////////////////////////////////////////////////////
+//调试用颜色
+//@content-v-background-color: #fff;
+//@content-h-background-color: #46ff49;
+@content-v-background-color: #fff;
+@content-h-background-color: #fff;
+//图形与内容的Col
+//内容的Col
+@72-72-content-height:     8rem;//88px; 11px-rem
+@content-72-72-padding-top:0.2rem;//2px;
+@content-72-72-padding-right:0.2rem;//2px;
+@content-72-72-padding-bottom:0.2rem;//2px;
+@content-72-72-margin-bottom:0.8rem;//8px;
+@content-72-72-margin-right:0.2rem;//2px;
+
+@6plus-container-v-high:         @6plus-image-v-with+16px;
+@6plus-container-h-high:         @6plus-image-h-with+24px;
+@gt-72-container-v-high:         @gt-72-image-v-with+16px;
+@gt-72-container-h-high:         @gt-72-image-h-with+16px;//54px;
+//竖屏
+@5scl-72-container-v-high:        @5scl-72-image-v-with+16px;//66
+//横屏
+@5scl-72-container-h-high:        @5scl-72-image-h-with+16px;//72
+
+//xs
+@content-72-72-margin-right:0.2rem;//2px;
+//width:72px;height: 72px;
+//列表类字体调整
+@content-font-size: small;
+@content-font-gt-v-72-size: 11px;
+@content-font-gt-v-72-title: 11px;
+@content-font-gt-v-72-content: 10px;
+
+@content-font-gt-h-72-size: 18px;
+@content-font-gt-h-72-title: 18px;
+@content-font-gt-h-72-content: 16px;
+
+@content-font-5scl-v-72-size: 10px;
+@content-font-5scl-v-72-title: 9px;
+@content-font-5scl-v-72-content: 9px;
+
+@content-font-5scl-h-72-size: 11px;
+@content-font-5scl-h-72-title: 10px;
+@content-font-5scl-h-72-content: 10px;
+
+@content-font-6plus-v-72-size: 10px;
+@content-font-6plus-v-72-title: 10px;
+@content-font-6plus-v-72-content: 10px;
+
+@content-font-6plus-h-72-size: 12px;
+@content-font-6plus-h-72-title: 11px;
+@content-font-6plus-h-72-content: 11px;
+
+@content-font-pad2-v-72-size: 11px;
+@content-font-pad2-v-72-title: 10px;
+@content-font-pad2-v-72-content: 10px;
+
+@content-font-pad2-h-72-size: 12px;
+@content-font-pad2-h-72-title: 11px;
+@content-font-pad2-h-72-content: 11px;
+
+//笔记本
+@content-font-lg-xl-72-size: 12px;
+@content-font-lg-xl-72-title: 11px;
+@content-font-lg-xl-72-content: 11px;
+
+@content-font-lg-chrome-72-size: 12px;
+@content-font-lg-chrome-72-title: 11px;
+@content-font-lg-chrome-72-content: 11px;
+//横屏字体
+@content-font-xs-h-size: 14px;
+@content-font-xs-h-title: 14px;
+@content-font-xs-h-content: 13px;
+
+@content-font-md-h-size: 15px;
+@content-font-md-h-title: 15px;
+@content-font-md-h-content: 14px;
+
+@content-font-lg-h-size: 16px;
+@content-font-lg-h-title: 16px;
+@content-font-lg-h-content: 15px;
+
+//列表类字体调整
+@content-font-size-md: 13px;
+@content-font-gt-v-md-size: 13px;
+@content-font-gt-v-md-title: 13px;
+@content-font-gt-v-md-content: 12px;
+
+@content-font-gt-h-md-size: 17px;
+@content-font-gt-h-md-title: 17px;
+@content-font-gt-h-md-content: 16px;
+
+@content-font-5scl-v-md-size: 12px;
+@content-font-5scl-v-md-title: 12px;
+@content-font-5scl-v-md-content: 11px;
+
+@content-font-5scl-h-md-size: 12px;
+@content-font-5scl-h-md-title: 12px;
+@content-font-5scl-h-md-content: 11px;
+
+@content-font-6plus-v-md-size: 12px;
+@content-font-6plus-v-md-title: 12px;
+@content-font-6plus-v-md-content: 11px;
+
+@content-font-6plus-h-md-size: 13px;
+@content-font-6plus-h-md-title: 13px;
+@content-font-6plus-h-md-content: 12px;
+
+@content-font-pad2-v-md-size: 12px;
+@content-font-pad2-v-md-title: 11px;
+@content-font-pad2-v-md-content: 11px;
+
+@content-font-pad2-h-md-size: 12px;
+@content-font-pad2-h-md-title: 11px;
+@content-font-pad2-h-md-content: 11px;
+
+//笔记本
+@content-font-lg-xl-md-size: 14px;
+@content-font-lg-xl-md-title: 12px;
+@content-font-lg-xl-md-content: 12px;
+
+@content-font-lg-chrome-md-size: 12px;
+@content-font-lg-chrome-md-title: 11px;
+@content-font-lg-chrome-md-content: 11px;
+
+//lg
+@content-font-size-lg: 14px;
+@content-font-gt-v-lg-size: 14px;
+@content-font-gt-v-lg-title: 14px;
+@content-font-gt-v-lg-content: 12px;
+
+@content-font-gt-h-lg-size: 18px;
+@content-font-gt-h-lg-title: 18px;
+@content-font-gt-h-lg-content: 16px;
+
+@content-font-5scl-v-lg-size: 12px;
+@content-font-5scl-v-lg-title: 12px;
+@content-font-5scl-v-lg-content: 11px;
+
+@content-font-5scl-h-lg-size: 14px;
+@content-font-5scl-h-lg-title: 13px;
+@content-font-5scl-h-lg-content: 13px;
+
+@content-font-6plus-v-lg-size: 16px;
+@content-font-6plus-v-lg-title: 14px;
+@content-font-6plus-v-lg-content: 14px;
+
+@content-font-6plus-h-lg-size: 18px;
+@content-font-6plus-h-lg-title: 16px;
+@content-font-6plus-h-lg-content: 16px;
+
+@content-font-pad2-v-lg-size: 12px;
+@content-font-pad2-v-lg-title: 11px;
+@content-font-pad2-v-lg-content: 11px;
+
+@content-font-pad2-h-lg-size: 12px;
+@content-font-pad2-h-lg-title: 11px;
+@content-font-pad2-h-lg-content: 11px;
+
+//笔记本
+@content-font-lg-xl-lg-size: 14px;
+@content-font-lg-xl-lg-title: 12px;
+@content-font-lg-xl-lg-content: 12px;
+
+@content-font-lg-chrome-lg-size: 12px;
+@content-font-lg-chrome-lg-title: 11px;
+@content-font-lg-chrome-lg-content: 11px;
+
+@content-72-72-margin-right:0.2rem;//2px;
+//width:72px;height: 72px;
+@image-72-72:                    80px;
+@image-72-72-margin-top:        4px;
+@image-72-72-margin-left:       0.4rem;//4px;
+
+//5.8寸,三星GT-I9152,960 540 dpr:1.5 竖屏
+@gt-72-image-v-with:             72px;
+@gt-margin-v-left:               6px;
+@gt-margin-v-top:                6px;
+
+
+//5.8寸,三星GT-I9152,960 540 dpr:1.5 横屏
+@gt-72-image-h-with:            80px;
+@gt-margin-h-left:               6px;
+@gt-margin-h-top:                6px;
+
+
+//苹果6 plus 5.5英寸 1000-1600，竖屏
+@6plus-image-v-with:             66px;
+@6plus-margin-v-left:            0.2rem;
+@6plus-margin-v-top:             0.5rem;
+
+
+
+//苹果6 plus 5.5英寸 1000-1600，横屏
+@6plus-image-h-with:             72px;
+@6plus-margin-h-left:            0.2rem;
+@6plus-margin-h-top:             0.5rem;
+
+
+
+//5寸，三星S6，华为SCL，1280/720，竖屏
+@5scl-72-image-v-with:            50px;
+@5scl-72-margin-v-left:           @image-72-72-margin-top;
+@5scl-72-margin-v-top:            @image-72-72-margin-left;
+
+//5寸，三星S6，华为SCL，1280/720，横屏
+@5scl-72-image-h-with:             60px;
+@5scl-72-margin-h-left:             @image-72-72-margin-top;
+@5scl-72-margin-h-top:              @image-72-72-margin-left;
+
+//72时，Button位置调整
+@72-image-botton-bottom-gt-v:-10px;
+@72-image-botton-bottom-gt-h:-8px;
+@72-image-botton-bottom-5scl-v:2px;
+@72-image-botton-bottom-5scl-h:-4px;
+@72-image-botton-bottom-6plus-v:-16px;
+@72-image-botton-bottom-6plus-h:-16px;
+
+
+//xs 4rem
+@image-width-common:  10rem;
+@image-height-common:  10rem;
+@image-margin-left-xs: 4px;
+@image-margin-top-xs: 2px;
+
+//三星5.8寸 GT-152，竖屏
+@image-width-xs-gt-v:  9rem;
+@image-height-xs-gt-v:  9rem;
+@image-margin-left-xs-gt-v: 2px;
+@image-margin-top-xs-gt-v: 20%;
+//三星5.8，横屏
+@image-width-xs-gt-h:  11rem;
+@image-height-xs-gt-h:  11rem;
+@image-margin-left-xs-gt-h:2px;
+
+@image-width-xs-6plus-h:  90px;
+@image-margin-left-xs-6plus-h: 14px;
+@image-margin-top-xs-6plus-h: 10px;
+
+@image-width-xs-6plus-v:  86px;
+@image-margin-left-xs-6plus-v: 4px;
+@image-margin-top-xs-6plus-v: 6px;
+
+@image-width-xs-scl-h:  86px;
+@image-margin-left-xs-scl-h: 4px;
+@image-margin-left-top-scl-h: 10px;
+
+@image-width-xs-scl-v:  72px;
+@image-margin-left-xs-scl-v: @image-72-72-margin-left;
+@image-margin-top-xs-scl-v: @image-72-72-margin-top;
+
+//md 200*200
+@image-width-md:  10rem;
+@image-height-md:  10rem;
+@image-margin-bottom-md:1rem;
+@image-margin-left-md: 3rem;
+@image-margin-top-md: 0;
+
+@image-width-md:  8rem;
+@image-height-md:  8rem;
+@image-margin-left-md: 3rem;
+//华为5寸，横屏
+@image-width-md-scl  :7.8rem;
+@image-margin-left-md-scl  : 2.5rem;
+
+@image-width-md-gt-v  :8rem;
+@image-margin-left-md-gt-v   : 26px;
+
+@image-width-md-gt-h  :14rem;
+@image-margin-left-md-gt-h   : 26px;
+
+@image-width-md-lg-chrome  :12rem;
+@image-margin-left-md-lg-chrome : 2.5rem;
+
+//lg
+@image-width-lg:  14rem;
+@image-height-lg:  14rem;
+@image-margin-left-lg: 2.8rem;
+@image-margin-top-lg: 0;
+
+//6plus横屏
+@image-width-lg-6plus-v:  20rem;
+@image-width-lg-6plus-h:16rem;
+
+//华为5寸，横屏
+@image-width-lg-5scl-h:  17rem;
+@image-width-lg-5scl-v:  14rem;
+@image-width-lg-lg-md:  17rem;
+@image-width-lg-lg-xl:  23rem;
+@image-width-lg-lg-chrome:  18rem;
+@image-width-lg-lg-pad2-v:@image-width-lg;
+@image-margin-left-lg-pad2-v:  26px;
+
+
+@image-width-lg-gt-v  :12rem;
+@image-margin-left-lg-gt-v   : 26px;
+
+@image-width-lg-gt-h  :14rem;
+@image-margin-left-lg-gt-h   : 26px;
+
+//两个图显示偏移，即b-image-continer
+//设置四个外补白，默认值为auto
+@marginDefault:           auto;
+@b-image-continer-margin-left:   2rem;
+@b-image-continer-margin-left-6plus-v:   2rem;
+@b-image-continer-margin-left-gt-v:   1rem;
+@b-image-continer-margin-left-gt-h:   2rem;
+
+@image-width-lg-lg-md:  17rem;
+@image-width-lg-lg-xl:  23rem;
+@image-width-lg-lg-chrome:  18rem;
+
+//panle背景色
+@panel-abc-heading-bg: #f5f5f5;
+@bnt-abc-bg:  rgba(255, 255, 255, 0.01);
+
+//Table List
+@default-border:1px solid #ddd;
+//border:"0px solid #ddd"
+@none-border:none;
+@default-margin-top-v:10px;
+@default-margin-bottom-v:10px;
+
+////////////////////////////////////////////////////////
+
+//格子画图显示标准
+@screen-h:                  720px;
+@screen-v:                  480px;
+@screen-h2drp:              640px;
+
+@xs-screen-standrand: 1160px;
+@xs-strandand:@screen-sm/2;
+@xs-strandand-v:@screen-v/2;
+@xs-strandand-h:@screen-h/2;//480
+@xs-apple-strandand-v:@screen-xpv/2;
+@xs-apple-strandand-h:@screen-sm/2; //768
+//
+@xs-apple--pad2-strandand-v:@screen-pad2v/2;
+@xs-apple--pad2-strandand-h:@screen-pad2h/2;
+
+@xs-image-width:80px;
+//小图默认大小
+@xs-image-width:80px;
+@xs-content-width:160px;
+@xs-content-col-width:80px;
+@xs-content-height:24px;
+@sm-text-width:120px;
+//中图默认大小
+//
+@md-image-width:80px;
+@md-image-height:80px;
+@md-content-width:120px;
+@md-content-col-width:100px;
+@md-text-width:160px;
+//大图默认大小
+@lg-image-width:160px;
+@lg-image-hight:84px;
+@lg-content-col-width:120px;
+@lg-content-width:160px;
+@lg-text-width:160px;
+//默认的间隙
+@margin-left:6px;
+@image-z-index:2;
+//大格子显示
+@content-width-lg-lg: floor((@screen-sm*0.8 /4));
+@image-width-lg-lg: floor((@screen-sm*0.75 /4));
+@image-margin-left-lg-lg: floor((@screen-sm*0.75 /4));
+
+@content-width-xs: floor((@xs-strandand*0.8 /4));
+@image-width-xs: floor((@xs-strandand*0.75 /4));
+@image-margin-left-xs: floor((@xs-strandand*0.75 /4));
+
+//两个格子的比例
+//大图收缩
+@table-left-precent:0.8;
+//格子中内容的收缩比例
+@table-left-content-precent:1;
+//格子图片宽度伸缩
+@table-left-height-precent:1;
+
+//中图
+@table-right-md-content-precent:1;
+//中图的缩放
+@table-right-precent:1;//
+//中图的高度收缩比例
+@table-right-md-height-precent:1;
+//
+//小图
+@table-right-xs-content-precent:1.5;
+@table-right-xs-precent:1;//
+@table-right-xs-height-precent:1;
+@with-baseline:100%;
+
+
+/////////////////////////////////////////////////////////////

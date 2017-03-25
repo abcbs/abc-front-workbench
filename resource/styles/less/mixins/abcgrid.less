@@ -1,0 +1,41 @@
+
+// Generate the extra small columns
+
+.make-xp-column(@columns; @gutter: @grid-gutter-width) {
+  position: relative;
+  float: left;
+
+  width: percentage((@columns / @grid-columns));
+  min-height: 1px;
+  padding-left:  (@gutter / 2);
+  padding-right: (@gutter / 2);
+}
+.make-xp-column-offset(@columns) {
+  margin-left: percentage((@columns / @grid-columns));
+}
+.make-xp-column-push(@columns) {
+  left: percentage((@columns / @grid-columns));
+}
+.make-xp-column-pull(@columns) {
+  right: percentage((@columns / @grid-columns));
+}
+
+//1200~1439 desktop
+.make-dt-column(@columns; @gutter: @grid-gutter-width) {
+  position: relative;
+  float: left;
+
+  width: percentage((@columns / @grid-columns));
+  min-height: 1px;
+  padding-left:  (@gutter / 2);
+  padding-right: (@gutter / 2);
+}
+.make-dt-column-offset(@columns) {
+  margin-left: percentage((@columns / @grid-columns));
+}
+.make-dt-column-push(@columns) {
+  left: percentage((@columns / @grid-columns));
+}
+.make-dt-column-pull(@columns) {
+  right: percentage((@columns / @grid-columns));
+}

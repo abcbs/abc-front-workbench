@@ -1,0 +1,28 @@
+{
+  "presets": ["es2015", "stage-1", "react"],
+  "plugins": [
+    ["transform-replace-object-assign", "simple-assign"],
+    "transform-dev-warning",
+    "transform-decorators-legacy"
+
+  ],
+  "env": {
+    "test": {
+      "sourceMaps": "both"
+    },
+    "production": {
+      "plugins": [
+        ["transform-replace-object-assign", "simple-assign"],
+        "transform-dev-warning",
+        "transform-decorators-legacy"
+
+      ]
+    },
+    "release": {
+      "plugins": [
+        "transform-runtime",
+        ["transform-react-remove-prop-types", {"mode": "wrap"}]
+      ]
+    }
+  }
+}

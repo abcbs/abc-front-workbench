@@ -1,0 +1,20 @@
+button .badge-abc{
+  top:-20px;
+}
+
+.badge-abc {
+  vertical-align: super !important;
+  color: @abc-badge-color !important;
+  background-color:@abc-label-background!important;
+  position: relative;
+  //left:-20px;
+  top:6px;
+  opacity: 0.6;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0.6)";
+
+
+  &:hover {
+    background-color: darken(@abc-label-background, 10%) !important;;
+    color: white !important;
+  }
+}

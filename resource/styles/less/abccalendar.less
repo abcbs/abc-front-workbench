@@ -1,0 +1,58 @@
+.rw-calendar{
+  color:red;
+  //@media (min-width: @screen-xpv) and (max-width: @screen-xpvx){
+  //  height:256px !important;
+  //}
+  ////320手机竖屏
+  //@media (max-width: @screen-min-vmax) and (min-width: @screen-min-v){
+  //  height:200px !important;
+  //}
+
+}
+
+.rw-btn{
+  @media(min-width: @screen-lg-xl) and (max-width: @screen-lg-xlx){
+    padding:.15em 0 .3em !important;
+  }
+}
+.rw-popup-container.rw-calendar-popup{
+  color:red;
+  opacity: 0.9;
+  -webkit-filter:opacity(.9);
+  -moz-opacity:0.9;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0.9)";
+  //width:14rem
+  .orientation-font-size;
+  .vertical-font-size;
+  //根据适配调整
+  //苹果竖屏
+  @media (min-width: @screen-xpv) and (max-width: @screen-xpvx){
+    width:21.6rem !important;
+  }
+  //320手机竖屏
+  @media (max-width: @screen-min-vmax) and (min-width: @screen-min-v){
+    width:17rem !important;
+  }
+  //最小屏
+  @media (max-width: @screen-min-xsm){
+    width:16rem !important;
+  }
+  //360横屏
+  @media (min-width: @screen-gtv) and (max-width:@screen-gtvx)
+  and  (-webkit-min-device-pixel-ratio : 1) and (-webkit-max-device-pixel-ratio :1.9){
+    width:15.8rem !important;
+  }
+  @media (min-width: @screen-sclv) and (max-width: @screen-sclvx) and (-webkit-min-device-pixel-ratio :2){
+    width:19rem !important;
+  }
+
+  //pad横屏
+  @media (min-width : @screen-pad2h) and (max-device-width :
+          @screen-pad2h-max) and (-webkit-min-device-pixel-ratio : 1) and (-webkit-max-device-pixel-ratio : 2){
+    width:22.5rem !important;
+  }
+  //pad竖屏
+  @media (min-width: @screen-pad-md) and (max-width: @screen-pad-md-max){
+    width:36.5rem !important;
+  }
+}

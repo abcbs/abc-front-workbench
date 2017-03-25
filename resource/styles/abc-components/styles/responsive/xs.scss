@@ -1,0 +1,326 @@
+// These will be replaced with the corresponding native CSS variables
+// when CSS native variables will be supported in all major browsers.
+// http://caniuse.com/#search=css%20var
+@include set_css_variable_font_size(14pt);
+@include set_css_variable_input_width(calc(var(--modular-grid-unit) * 35));
+@include set_css_variable_header_height(calc(var(--modular-grid-unit) * 7));
+@include set_css_variable_content_section_margin(0);
+@include set_css_variable_content_section_padding(0.8rem);
+
+@include columns(xs);
+
+.logo
+{
+	margin-left  : 1.2em;
+	margin-right : 1.2em;
+	
+	margin-top : var(--header-vertically-centered-text-margin-top);
+}
+
+.logo
+{
+	font-size : 14pt
+}
+
+// .modal-content
+// {
+// 	// overwrites inline css
+// 	padding-left   : 1em !important;
+// 	padding-right  : 1em !important;
+// 	padding-top    : 1em !important;
+// 	padding-bottom : 1em !important;
+// }
+
+.user-bar
+{
+	.user-name
+	{
+		display: none;
+	}
+}
+
+.authentication-form, .registration-form
+{
+	width : calc(var(--modular-grid-unit) * 40);
+
+	h2
+	{
+		font-size: 1.3em;
+		margin-bottom: 0;
+	}
+
+	.or-register
+	{
+		margin-top: 0;
+		margin-bottom: calc(var(--modular-grid-unit) * 2);
+	}
+}
+
+.authentication-form
+{
+	.button--primary
+	{
+		// overwrites inline css
+		display: block !important;
+		// margin-bottom: 1em;
+	}
+}
+
+.sign-in
+{
+	margin-right: calc(var(--modular-grid-unit) * 2);
+}
+
+.button-group-button
+{
+	padding-top    : var(--modular-grid-unit);
+	padding-bottom : var(--modular-grid-unit);
+	padding-left   : calc(var(--modular-grid-unit) * 1.5);
+	padding-right  : calc(var(--modular-grid-unit) * 1.5);
+}
+
+header
+{
+	text-align      : center;
+	justify-content : center;
+}
+
+.logo
+{
+	display: block;
+}
+
+.menu
+{
+	margin: 0;
+
+	> li
+	{
+		&:first-child
+		{
+			padding-top    : calc(2 * var(--modular-grid-unit));
+		}
+
+		&:last-child
+		{
+			padding-bottom : calc(2 * var(--modular-grid-unit));
+		}
+	}
+}
+
+.nav-widescreen
+{
+	display: none;
+}
+
+.menu-page .nav-widescreen
+{
+	display: block;
+}
+
+.menu-item
+{
+	// overrides inline css
+	display : block !important;
+	border  : none;
+
+	margin : 0;
+
+	padding-top    : var(--modular-grid-unit);
+	padding-bottom : var(--modular-grid-unit);
+
+	padding-left  : calc(var(--modular-grid-unit) * 2);
+	padding-right : calc(var(--modular-grid-unit) * 3);
+}
+
+.nav-collapsible-shown
+{
+	transform  : translate3d(0, 0, 0);
+	box-shadow : 0 0 0.2em rgba(0, 0, 0, 0.4);
+}
+
+.language
+{
+	margin-top   : 0.25em;
+	margin-right : 1em;
+
+	&, .dropdown-item-list li, .dropdown-item, .dropdown-item-selected
+	{
+		// line-height: 0;
+	}
+
+	.dropdown-item
+	{
+		padding-top: 0;
+		padding-bottom: 0;
+	}
+
+	.dropdown-arrow
+	{
+		// overrides inline css
+		margin-bottom : 0.25em !important;
+	}
+}
+
+.menu-button-container
+{
+	position : absolute;
+	top  : 0;
+	left : 0;
+
+	height : 100%;
+
+	display        : flex;
+	flex-direction : row;
+	align-items    : center;
+}
+
+.menu-button
+{
+	display : inline-block;
+
+	padding: calc(var(--modular-grid-unit) * 1.5);
+
+	line-height: 0;
+}
+
+.menu-icon, .menu-close
+{
+	width  : calc(var(--modular-grid-unit) * 5);
+	height : calc(var(--modular-grid-unit) * 5);
+}
+
+.menu-close
+{
+	svg
+	{
+		width  : 100%;
+		height : 100%;
+	}
+}
+
+.menu-icon
+{
+	display : block;
+
+	path
+	{
+		// overrides inline css
+		fill: var(--gray-color-lighter) !important;
+	}
+}
+
+.menu-button a:active .menu-icon
+{
+	path
+	{
+		// overrides inline css
+		fill: var(--gray-color-lighter) !important;
+	}
+}
+
+.menu-close
+{
+	position : absolute;
+	right    : 0;
+	top      : 0;
+
+	svg path
+	{
+		// overrides inline css
+		stroke: #eeeeee !important;
+	}
+
+	&:active
+	{
+		svg path
+		{
+		// overrides inline css
+			stroke: #ffffff !important;
+		}
+	}
+}
+
+/*
+// non-svg menu icon
+.menu-icon:before
+{
+	content: "";
+
+	position: absolute;
+
+	top  : 0.2em;
+	left : 0;
+
+	width: 1em;
+	height: 0.125em;
+
+	border-top    : 0.375em double;
+	border-bottom : 0.125em solid;
+}
+*/
+
+.page
+{
+	// box-shadow will show a bug if declared here
+	// https://github.com/philipwalton/solved-by-flexbox/issues/79
+	// box-shadow : 0 0 0.35em rgba(0, 0, 0, 1);
+
+	// when adjusting this transition time also adjust it in pages/layout.js
+	transition-property        : transform;
+	transition-timing-function : ease-out;
+
+	// breaks <header/> position fixed
+	// transform  : translate3d(0px, 0px, 0px);
+}
+
+.nav-collapsible
+{
+	display: inline-block;
+
+	min-height: 100%;
+
+	position : fixed;
+	left     : 0;
+	top      : 0;
+	bottom   : 0;
+	z-index  : 1;
+
+	overflow-y: auto;
+
+	background: var(--black-color);
+
+	.menu-item
+	{
+		color: var(--gray-color-lighter);
+
+		&:active
+		{
+			color: var(--base-color-lighter);
+		}
+	}
+}
+
+.page
+{
+	min-width: 100%;
+}
+
+.user-profile .user-picture
+{
+	width      : calc(var(--modular-grid-unit) * 14);
+	height     : calc(var(--modular-grid-unit) * 14);
+	min-width  : calc(var(--modular-grid-unit) * 14);
+	min-height : calc(var(--modular-grid-unit) * 14);
+}
+
+.user-profile__picture__change__label
+{
+	font-size: 0.75rem;
+}
+
+.background-section
+{
+	margin-top    : calc(var(--modular-grid-unit) * 2);
+	margin-bottom : calc(var(--modular-grid-unit) * 2);
+}

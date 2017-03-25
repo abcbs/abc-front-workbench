@@ -1,0 +1,172 @@
+
+.control-label-abc{
+    margin-top: 6px !important;
+    //font-size: @font-size-base !important;
+    position: relative !important;
+}
+//调整label字体
+li,
+p,
+button,
+label{
+    .orientation-font-size;
+    .vertical-font-size;
+}
+
+.control-label-abc:hover{
+    //
+    left: 1px;
+}
+
+.input-xp {
+    .input-size(@input-height-small; @padding-small-vertical;
+            @padding-small-horizontal; @font-size-small; @line-height-small; @input-border-radius-small);
+}
+.form-group-xp {
+    .form-control {
+        height: @input-height-small;
+        padding: @padding-small-vertical @padding-small-horizontal;
+        font-size: @font-size-small;
+        line-height: @line-height-small;
+        border-radius: @input-border-radius-small;
+    }
+    select.form-control {
+        height: @input-height-small;
+        line-height: @input-height-small;
+    }
+    textarea.form-control,
+    select[multiple].form-control {
+        height: auto;
+    }
+    .form-control-static {
+        height: @input-height-small;
+        min-height: (@line-height-computed + @font-size-small);
+        padding: (@padding-small-vertical + 1) @padding-small-horizontal;
+        font-size: @font-size-small;
+        line-height: @line-height-small;
+    }
+}
+
+
+
+.input-xs + .form-control-feedback,
+.input-group-xs + .form-control-feedback,
+.form-group-xs .form-control + .form-control-feedback {
+    width: @input-height-large;
+    height: @input-height-large;
+    line-height: @input-height-large;
+}
+.input-xp + .form-control-feedback,
+.input-group-xp + .form-control-feedback,
+.form-group-xp .form-control + .form-control-feedback {
+    width: @input-height-small;
+    height: @input-height-small;
+    line-height: @input-height-small;
+}
+
+.form-inline {
+
+    @media (max-width: @screen-xpmax) and (min-width:@screen-xpmin) {
+        .form-control{
+            .orientation-font-size;
+            .vertical-font-size;
+        }
+        .control-label {
+            .orientation-font-size;
+            .vertical-font-size;
+        }
+        //调整chekbox
+        label > input{
+            .orientation-font-size;
+            .vertical-font-size;
+            margin-top: 2px;
+        }
+    }
+    //
+    @media (max-width:@screen-xs-min) {
+        .control-label {
+            .orientation-font-size;
+            .vertical-font-size;
+        }
+        .form-control{
+            .orientation-font-size;
+            .vertical-font-size;
+        }
+        label > input{
+            .orientation-font-size;
+            .vertical-font-size;
+            margin-top: 2px;
+        }
+    }
+
+}
+// Horizontal forms
+//
+// Horizontal forms are built on grid classes and allow you to create forms with
+// labels on the left and inputs on the right.
+
+.form-horizontal {
+    // Make form groups behave like rows
+    .form-group {
+        //.make-grid(xp);
+    }
+
+    @media (max-width: @screen-xpmax) and (min-width:@screen-xpmin) {
+        .control-label {
+            text-align: left;
+            margin-bottom: 0;
+            padding-top: (@padding-base-vertical + 1); // Default padding plus a border
+        }
+        .form-control{
+            .orientation-font-size;
+            .vertical-font-size;
+        }
+        label > input{
+            .orientation-font-size;
+            .vertical-font-size;
+            margin-top: 2px;
+        }
+    }
+    //小于480
+    @media (max-width:@screen-xs-min) {
+        .control-label {
+            .orientation-font-size;
+            .vertical-font-size;
+            text-align: left;
+            margin-bottom: 0;
+            padding-top: (@padding-base-vertical + 1); // Default padding plus a border
+        }
+        .form-control{
+            .orientation-font-size;
+            .vertical-font-size;
+        }
+        label > input{
+            .orientation-font-size;
+            .vertical-font-size;
+            margin-top: 2px;
+        }
+
+    }
+
+    .form-group-xp {
+        @media (max-width: @screen-xpmax) and (min-width:@screen-xpmin) {
+            .control-label {
+                .orientation-font-size;
+                .vertical-font-size;
+                padding-top: (@padding-small-vertical + 1);
+                font-size: @font-size-small;
+            }
+        }
+        .form-control{
+            .orientation-font-size;
+            .vertical-font-size;
+        }
+        label > input{
+            .orientation-font-size;
+            .vertical-font-size;
+            margin-top: 2px;
+        }
+    }
+
+
+}

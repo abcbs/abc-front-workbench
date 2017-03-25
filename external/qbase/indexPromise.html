@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Q.async animation example</title>
+</head>
+<body>
+    <div id="box" style="width: 20px; height: 20px; background-color: red;"></div>
+
+    <script src="q.js"></script>
+    <script>
+      /**
+       (function () {
+        "use strict";
+
+        var deferredAnimate = Q.async(function* (element) {
+            for (var i = 0; i < 100; ++i) {
+                element.style.marginLeft = i + "px";
+                yield Q.delay(20);
+            }
+        });
+
+        Q.spawn(function* () {
+            yield deferredAnimate(document.getElementById("box"));
+            alert("Done! OK");
+        });
+    }());
+    **/
+      /**
+      var generator = Q.async(function* () {
+          var ten = yield 10;
+          console.log(ten, 10);
+          var twenty = yield ten + 10;
+          console.log(twenty, 20);
+          var thirty = yield twenty + 10;
+          console.log(thirty, 30);
+          return thirty + 10;
+      });
+      
+      generator().then(function (forty) {
+          console.log(forty, 40);
+      }, function (reason) {
+          console.log("reason", reason);
+      });
+    **/
+    function eventually(value) {
+        return Q.delay(value, 1000);
+    }
+
+    Q.all([1, 2, 3].map(eventually))
+    .done(function (result) {
+        console.log(result);
+    });
+    
+    Q.all([
+        eventually(10),
+        eventually(20)
+    ])
+    .spread(function (x, y) {
+        console.log(x, y);
+    })
+    .done();
+
+
+    /**
+    var p = new Promise(function(resolve, reject) {
+      resolve("hello world");
+     });
+
+     p.then(function(str) {
+      alert(str);
+     });
+    **/
+    
+    //Exhibit A
+    
+    //var p = new Promise(/*...*/);
+    //p.then(func1);
+    //p.then(func2);
+
+    // Exhibit B
+    //var p = new Promise(/*...*/);
+    //p.then(func1)
+    //  .then(func2);
+    /**
+    var p = new Promise(function(resolve, reject) {
+    resolve("hello world");
+   });
+   
+   p.then(function(str) {})
+   .then(function(str) {
+    alert(str);
+   });
+   **/
+   
+    // Exhibit A
+    /**
+   new Promise(function(resolve, reject) {
+      resolve("hello world");
+   })
+   .then(
+      function(str) {
+        throw new Error("uh oh");
+      },
+      undefined      
+   )
+   .then(
+      undefined,
+      function(error) {
+         alert(error);
+      }
+   );
+  **/
+ 
+   /**
+   var p = new Promise(function(resolve, reject) {
+     reject(new Error("pebkac"));
+    });
+    
+    p.then(
+     undefined,
+     function(error) {
+         //throw new Error("uh oh");
+      }
+    )
+    .then(
+     function(str) {
+     alert("I am saved!");
+     },
+     function(error) {
+     alert("Bad computer!");
+     }
+    );
+    **/
+   /**
+   function runme() {
+      var i = 0;
+      new Promise(function(resolve) {
+        resolve();
+      })
+      .then(function() {
+        i += 2;
+        //
+        alert(i);
+      });
+      //
+      alert(i);
+   }
+
+    runme();
+    **/
+   
+   
+    
+    // Exhibit A
+    /**
+    new Promise(function(resolve, reject) {
+      resolve("hello world");
+    })
+    .then(
+      function(str) {
+        throw new Error("uh oh");
+      },
+      undefined
+    )
+    .then(
+      undefined,
+      function(error) {
+        alert(error);
+      }
+    );
+
+
+    // Exhibit B
+    new Promise(function(resolve, reject) {
+     resolve("hello world");
+    })
+    .then(
+     function(str) {
+      throw new Error("uh oh");
+     },
+     function(error) {
+      alert(error);
+     }
+    );
+  **/
+
+   /**
+      new Promise(function(res, rej) {
+        console.log(Date.now() + " start setTimeout");
+        setTimeout(res, 2000);
+    }).then(function() {
+        console.log(Date.now() + " timeout call back");
+    });
+
+    (function () {
+        "use strict";
+        var deferredAnimate = Q.async(function* (element) {
+            for (var i = 0; i < 100; ++i) {
+                element.style.marginLeft = i + "px";
+                yield Q.delay(20);
+            }
+        });
+        Q.spawn(function* () {
+            yield deferredAnimate(document.getElementById("box"));
+            alert("Done!");
+        });
+    }());**/
+    </script>
+</body>
+</html>
+

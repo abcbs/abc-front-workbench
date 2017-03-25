@@ -1,0 +1,181 @@
+//上图，下文字，每行四列，5个汉字，10汉字
+.thumbnail-b-image-abc {
+  padding-top:2px;
+  padding-right:2px;
+  margin-bottom:8px;
+  margin-right:2px;
+  padding-left: 2px;
+  border:1px solid #ddd;
+  border-left: none;
+  border-radius:4px;
+  transition:border 0.2s ease-in-out;
+  font-size: @content-font-size-lg;
+  height: 100%;
+  width: 100%;
+
+  @imageWidth:14rem;
+
+  h5,h6,p {
+    margin-left: 14px;
+  }
+  .content-sytle.title-setting(h5);
+  .content-sytle.title-setting(h6);
+  .content-sytle.content;
+  h5,h6{
+     &:extend(.content-list-font-lg .title);
+  }
+  p{
+    &:extend(.content-list-font-lg .content);
+  }
+  .btn{
+    &:extend(.content-list-font-lg  .content);
+  }
+
+  img{
+    width:@image-width-lg;
+    height: @image-width-lg;
+    margin-left: @image-margin-left-lg;
+    //6plus横屏
+    .image-6plus-h(@image-width-lg-6plus-v;@image-margin-left-lg;@image-margin-top-lg);
+    .image-6plus-v(@image-width-lg-6plus-h;@image-margin-left-lg;@image-margin-top-lg);
+       //华为5寸，横屏
+    .image-5scl-h(@image-width-lg-5scl-h;@image-margin-left-lg;@image-margin-top-lg);
+    .image-5scl-v(@image-width-lg-5scl-v;@image-margin-left-lg;@image-margin-top-lg);
+    //笔记本
+    .image-lg-md(  @image-width-lg-lg-md;@image-margin-left-lg;@image-margin-top-lg);
+    .image-lg-xl(  @image-width-lg-lg-xl;@image-margin-left-lg;@image-margin-top-lg);
+    .image-lg-chrome(@image-width-lg-lg-chrome;@image-margin-left-lg;@image-margin-top-lg);
+    //设备宽度和屏幕宽度，pad2
+    .image-pad2-v(@image-width-lg-lg-pad2-v;@image-margin-left-lg-pad2-v;@image-margin-top-lg);
+    //
+    .image-gt-v(@image-width-lg-gt-v;@image-margin-left-lg-gt-v;auto);
+    .image-gt-h(@image-width-lg-gt-h;@image-margin-left-lg-gt-h;auto);
+
+  }
+
+  //md
+  .b-image{
+    &:extend(img);
+    width:@image-width-md;
+    height: @image-height-md;
+    margin-left: @image-margin-left-md;
+
+    .image-6plus-h(@image-width-lg-6plus-v;@image-margin-left-lg;@image-margin-top-lg);
+    .image-6plus-v(@image-width-lg-6plus-h;@image-margin-left-lg;@image-margin-top-lg);
+
+    .image-gt-v(@image-width-md-gt-v;@image-margin-left-md-gt-v;auto);
+    .image-gt-h(@image-width-md-gt-h;@image-margin-left-md-gt-h;auto);
+
+
+
+    .image-5scl-h(@image-width-md-scl;
+            @image-margin-left-md-scl;@image-margin-top-md);
+
+    .image-lg-chrome(@image-width-md-lg-chrome;
+            @image-margin-left-md-lg-chrome;@image-margin-top-md)
+  }
+  //用于一行显示
+  .b-image-xs{
+    &:extend(img);
+    width:@image-72-72;
+    height: @image-72-72;
+    margin-left:@image-margin-left-xs;
+    margin-top: @image-margin-top-xs;
+    .alignCenter-common(50%,50%);
+  }
+
+  .b-image-inline{
+    &:extend(.thumbnail-image-content-abc img);
+    margin-bottom: 1rem;
+  }
+
+  .b-image-continer{
+    display:inline-flex;
+    margin-left:@b-image-continer-margin-left;
+    margin-top: @image-margin-top-xs;
+
+    .margin-6plus-v(@marginDefault;@marginDefault;@marginDefault;@b-image-continer-margin-left-6plus-v);
+    //两个图片时调整
+    .element-preperty .android-dpr1g-v(margin-left;@b-image-continer-margin-left-gt-v);
+
+  }
+
+  .b-content-continer{
+    margin-left: -1rem;
+  }
+
+  .thumbnail-operator-abc {
+    right:0;
+    opacity: 0.6;
+    .btn{
+      //display: block;
+    }
+  }
+
+  .thumbnail-inline-abc {
+    margin-top:6px;
+    margin-left: 26px;
+    margin-bottom: 6px;
+  }
+
+  .thumbnail-md-abc{
+    &:extend(.content-list-font-md  .common);
+    .content-sytle.title-setting(h5);
+    .content-sytle.title-setting(h6);
+    .content-sytle.content;
+    h5,h6{
+      &:extend(.content-list-font-md  .title);
+    }
+
+    .btn{
+      &:extend(.content-list-font-md  .content);
+    }
+    p{
+      &:extend(.content-list-font-md  .content);
+    }
+  }
+
+  .thumbnail-xs4-abc {
+    margin-top:0px;
+    margin-left: 6px;
+
+    h5,p,.btn{
+      word-wrap:break-word;
+      margin-left: 0px;
+      text-overflow:ellipsis;
+      //font-size: 9px;
+      margin-bottom: 4px;
+      margin-top: 4px;
+      &:extend(.content-list-font-xs  .common);
+      //竖屏
+      .marginTopAndBottom-6plus-v(2px,2px);
+      .marginTopAndBottom-5scl-v(4px,4px);
+      .marginTopAndBottom-5scl-h(4px,4px);
+    }
+
+    h5{
+      font-weight: 700;
+      line-height:1.4
+    }
+
+    .content-sytle.title-setting(h5);
+    .content-sytle.content;
+    &:extend(.content-list-font-xs  .common);
+
+    h5{
+      &:extend(.content-list-font-xs  .title);
+    }
+
+    .btn{
+      &:extend(.content-list-font-xs  .content);
+    }
+    p{
+      &:extend(.content-list-font-xs  .content);
+    }
+
+  }
+
+}
+
+
+

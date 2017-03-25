@@ -1,0 +1,412 @@
+.element-preperty{
+  //6plus竖屏 @
+  //screen-xpv: 400px;//apple-6plus 竖屏
+  //@screen-xpvx:420px;//apple-6plus 竖屏
+  .appple-6plus-v(@element;@prepery){
+    @media (min-width: @screen-xpv) and (max-width: @screen-xpvx) and  (-webkit-min-device-pixel-ratio : 3){
+      @{element}:@prepery;
+      background-color: @content-v-background-color;
+
+    }
+  }
+
+  .appple-6plus-v-imp(@element;@prepery){
+    @media (min-width: @screen-xpv) and (max-width: @screen-xpvx) and  (-webkit-min-device-pixel-ratio : 3){
+        @{element}:@prepery !important;
+      background-color: @content-v-background-color;
+
+    }
+  }
+
+  //.appple-6plus-v(@element;@prepery){
+  //  @media (min-width: @screen-xpv) and (max-width: @screen-xpvx)
+  //  and  (-webkit-min-device-pixel-ratio : 3){
+  //      @{element}:@prepery;
+  //    background-color: @content-v-background-color;
+  //
+  //  }
+  //}
+
+  //6plus横屏
+  //@screen-xp: 730px;//apple-6plus
+  //@screen-xpx:767px;//apple-6plus
+  .appple-6plus-h(@element;@prepery){
+    @media (min-width: @screen-xp) and (max-width: @screen-xpx ) and  (-webkit-min-device-pixel-ratio : 3){
+        @{element}:@prepery;
+        background-color: @content-h-background-color;
+    }
+  }
+
+  .appple-6plus-h-imp(@element;@prepery){
+    @media (min-width: @screen-xp) and (max-width: @screen-xpx ) and  (-webkit-min-device-pixel-ratio : 3){
+        @{element}:@prepery !important;
+      background-color: @content-h-background-color;
+    }
+  }
+
+  //华为、三星5寸，竖屏
+  //@screen-sclv:  350px;//5寸，三星S6，华为SCL，1280/720/竖屏
+  //@screen-sclvx: 399px;//5寸，三星S6，华为SCL，1280/720/竖屏
+  .android-dpr2-v(@element;@prepery){
+    @media (min-width: @screen-sclv) and (max-width: @screen-sclvx) and (-webkit-min-device-pixel-ratio :2){
+        @{element}:@prepery;
+        background-color: @content-v-background-color;
+    }
+  }
+
+  .android-dpr2-v-imp(@element;@prepery){
+    @media (min-width: @screen-sclv) and (max-width: @screen-sclvx) and (-webkit-min-device-pixel-ratio :2){
+        @{element}:@prepery !important;
+      background-color: @content-v-background-color;
+    }
+  }
+  //华为5寸，横屏
+  //三星S6，华为SCL，1280/720实测进行, 理论上应当包含6p为横屏，667
+  //@screen-scl:                     424px;//5寸下线
+  //@screen-sclx:                    759px;//5寸上线
+  .android-dpr2-h(@element;@prepery){
+    @media (min-width: @screen-scl) and (max-width: @screen-sclx) and (-webkit-min-device-pixel-ratio :2){
+        @{element}:@prepery;
+      background-color: @content-v-background-color;
+    }
+  }
+
+  .android-dpr2-h-imp(@element;@prepery){
+    @media (min-width: @screen-scl) and (max-width: @screen-sclx) and (-webkit-min-device-pixel-ratio :2){
+        @{element}:@prepery !important;
+      background-color: @content-v-background-color;
+    }
+  }
+  //三星5.8，竖屏 oppo
+  //@screen-gtv:  350px;//5.8寸,三星GT-I9152,960 540 dpr:1.5/竖屏
+  //@screen-gtvx: 399px;//5.8寸,三星GT-I9152,960 540 dpr:1.5/竖屏
+  .android-dpr1g-v(@element;@prepery) {
+    @media (min-width: @screen-gtv) and (max-width:@screen-gtvx)
+    and  (-webkit-min-device-pixel-ratio : 1) and (-webkit-max-device-pixel-ratio :1.9) {
+        @{element}:@prepery;
+      background-color: @content-v-background-color;
+      }
+  }
+
+  .android-dpr1g-v-imp(@element;@prepery) {
+    @media (min-width: @screen-gtv) and (max-width:@screen-gtvx)
+    and  (-webkit-min-device-pixel-ratio : 1) and (-webkit-max-device-pixel-ratio :1.9) {
+        @{element}:@prepery !important;
+      background-color: @content-v-background-color;
+    }
+  }
+  //三星5.8，横屏bottom oppo,大于1
+  //@screen-gt:                       600px;//5.8寸,三星GT-I9152,960 540 dpr:1.5/横屏
+  //@screen-gtx:                      759px;//5.8寸,三星GT-I9152,960 540 dpr:1.5/横屏
+  .android-dpr1g-h(@element;@prepery){
+    @media (min-width: @screen-gt) and (max-width: @screen-gtx )
+    and   (-webkit-min-device-pixel-ratio : 1) and (-webkit-max-device-pixel-ratio :1.9){
+        @{element}:@prepery;
+        background-color: @content-v-background-color;
+    }
+  }
+
+  .android-dpr1g-h-imp(@element;@prepery){
+    @media (min-width: @screen-gt) and (max-width: @screen-gtx )
+    and   (-webkit-min-device-pixel-ratio : 1) and (-webkit-max-device-pixel-ratio :1.9){
+        @{element}:@prepery !important;
+      background-color: @content-v-background-color;
+    }
+  }
+
+  //@screen-xs,小于299,手机
+  .boot-min(@element;@prepery){
+    @media (max-width: @screen-min-xsm){
+        @{element}:@prepery;
+      background-color: @content-v-background-color;
+    }
+  }
+
+  .boot-min-imp(@element;@prepery){
+    @media (max-width: @screen-min-xsm){
+        @{element}:@prepery !important;
+      background-color: @content-v-background-color;
+    }
+  }
+
+  //@screen-xs,小于349,大于300,手机,
+  //iphone 4s 竖屏 320实测
+  //@screen-min-v: 300px;
+  //@screen-min-vmax: 349px;
+  .boot-xs-v(@element;@prepery){
+    @media (max-width: @screen-min-vmax) and (min-width: @screen-min-v){
+        @{element}:@prepery;
+      background-color: @content-v-background-color;
+    }
+  }
+
+  .boot-xs-v-imp(@element;@prepery){
+    @media (max-width: @screen-min-vmax) and (min-width: @screen-min-v){
+        @{element}:@prepery !important;
+      background-color: @content-v-background-color;
+    }
+  }
+
+  //@boot-xs-v:                     421px;
+  //@boot-xs-vmax:                  589px;
+  //作为横屏时，和竖屏保持一致
+  .boot-xs(@element;@prepery) {
+    @media (min-width: @boot-xs-v) and (max-width: @boot-xs-vmax) {
+        @{element}: @prepery;
+      background-color: @content-v-background-color;
+      //background-color: #41ffe3;
+    }
+  }
+
+  .boot-xs-imp(@element;@prepery) {
+    @media (min-width: @boot-xs-v) and (max-width: @boot-xs-vmax) {
+        @{element}: @prepery !important;
+      background-color: @content-v-background-color;
+      //background-color: #41ffe3;
+    }
+  }
+  //设备宽度和屏幕宽度，pad2
+  //pad2竖屏 768~991
+  .apple-pad2-v(@element;@prepery){
+    @media (min-width : @screen-pad2v) and (max-device-width :
+            @screen-pad2v-max) and (-webkit-min-device-pixel-ratio : 1) and (-webkit-max-device-pixel-ratio : 2) {
+        @{element}:@prepery;
+      background-color: @content-v-background-color;
+    }
+  }
+
+  .apple-pad2-v-imp(@element;@prepery){
+    @media (min-width : @screen-pad2v) and (max-device-width :
+            @screen-pad2v-max) and (-webkit-min-device-pixel-ratio : 1) and (-webkit-max-device-pixel-ratio : 2) {
+        @{element}:@prepery;
+      background-color: @content-v-background-color;
+    }
+  }
+  //Pad类设备
+  //设备宽度和屏幕宽度，pad2 横屏
+  //1199~992 1024
+  .apple-pad2-h(@element;@prepery){
+    @media (min-width : @screen-pad2h) and (max-device-width :
+            @screen-pad2h-max) and (-webkit-min-device-pixel-ratio : 1) and (-webkit-max-device-pixel-ratio : 2){
+        @{element}:@prepery;
+      background-color: @content-v-background-color;
+    }
+  }
+
+  .apple-pad2-h-imp(@element;@prepery){
+    @media (min-width : @screen-pad2h) and (max-device-width :
+            @screen-pad2h-max) and (-webkit-min-device-pixel-ratio : 1) and (-webkit-max-device-pixel-ratio : 2){
+        @{element}:@prepery !important;
+      background-color: @content-v-background-color;
+    }
+  }
+
+  //按照pad2,1199,769,
+  //@screen-pad-md:                769px ;
+  //@screen-pad-md-max:            1199px ;
+  .boot-sm(@element;@prepery) {
+    @media (min-width: @screen-pad-md) and (max-width: @screen-pad-md-max) {
+        @{element}:@prepery;
+      background-color: @content-v-background-color;
+    }
+  }
+
+  .boot-sm-imp(@element;@prepery) {
+    @media (min-width: @screen-pad-md) and (max-width: @screen-pad-md-max) {
+        @{element}:@prepery !important;
+      background-color: @content-v-background-color;
+    }
+  }
+  //笔记本设备
+  //1200~1439
+  //@screen-lg-md:                1200px;
+  //@screen-lg-mdx:               1439px;
+  .boot-lg-md(@element;@prepery) {
+    @media (min-width: @screen-lg-md) and (max-width:@screen-lg-mdx) {
+        @{element}:@prepery;
+      background-color: @content-v-background-color;
+    }
+  }
+
+  .boot-lg-md-imp(@element;@prepery) {
+    @media (min-width: @screen-lg-md) and (max-width:@screen-lg-mdx) {
+        @{element}:@prepery !important;
+      background-color: @content-v-background-color;
+    }
+  }
+  //@screen-lg-chrome:            1440px;
+  //@screen-lg-chromex:           1899px;
+  .pc-lg-chrome(@element;@prepery) {
+    @media (min-width: @screen-lg-chrome) and (max-width: @screen-lg-chromex) {
+        @{element}:@prepery;
+      background-color: @content-v-background-color;
+    }
+  }
+
+  .pc-lg-chrome-imp(@element;@prepery) {
+    @media (min-width: @screen-lg-chrome) and (max-width: @screen-lg-chromex) {
+        @{element}:@prepery !important;
+      background-color: @content-v-background-color;
+    }
+  }
+
+  //笔记本，ie,firefix
+  //@screen-lg-xl:                1900px;
+  //@screen-lg-xlx:               2000px;
+  .pc-lg-xl(@element;@prepery){
+    @media(min-width: @screen-lg-xl) and (max-width: @screen-lg-xlx){
+        @{element}:@prepery;
+      background-color: @content-v-background-color;
+    }
+  }
+
+  .pc-lg-xl-imp(@element;@prepery){
+    @media(min-width: @screen-lg-xl) and (max-width: @screen-lg-xlx){
+        @{element}:@prepery !important;
+      background-color: @content-v-background-color;
+    }
+  }
+
+  //@screen-dt:                    2001px;
+  //@screen-dt-max:                3000px;
+  .boot-desktop(@element;@prepery) {
+    @media (min-width: @screen-dt) and (max-width: @screen-dt-max) {
+        @{element}:@prepery;
+      background-color: @content-v-background-color;
+    }
+  }
+
+  .boot-desktop-imp(@element;@prepery) {
+    @media (min-width: @screen-dt) and (max-width: @screen-dt-max) {
+        @{element}:@prepery !important;
+      background-color: @content-v-background-color;
+    }
+  }
+
+  //按照最大屏幕设置
+  //2001
+  .boot-max(@element;@prepery) {
+    @media (min-width:@screen-lg-max) {
+        @{element}:@prepery;
+      background-color: @content-v-background-color;
+    }
+  }
+
+  .boot-max-imp(@element;@prepery) {
+    @media (min-width:@screen-lg-max) {
+        @{element}:@prepery !important;
+      background-color: @content-v-background-color;
+    }
+  }
+
+  //竖屏时处理变量
+  .props-vertical(@element;@prepery){
+     .android-dpr2-v(@element;@prepery);
+     .android-dpr1g-v(@element;@prepery);
+     .appple-6plus-v(@element;@prepery);
+     .apple-pad2-v(@element;@prepery);
+     .boot-xs-v(@element;@prepery);
+     .boot-min(@element;@prepery);
+
+
+  }
+  //横屏处理变量
+  .props-horizontal(@element;@prepery){
+    .android-dpr2-h(@element;@prepery);
+    .android-dpr1g-h(@element;@prepery);
+    .appple-6plus-h(@element;@prepery);
+    .apple-pad2-h(@element;@prepery);
+    .boot-xs(@element;@prepery);
+    //////////////////////////////////
+    .boot-xs(@element;@prepery);
+     //////跟随Pad横屏设置
+    //.boot-desktop(@element;@prepery);
+    //.boot-lg-md(@element;@prepery);
+    //.boot-max(@element;@prepery);
+    /////////////////////////////////
+  }
+  .props-desktop(@element;@prepery){
+    .pc-lg-xl(@element;@prepery);
+    .pc-lg-chrome(@element;@prepery);
+    .apple-pad2-v(@element;@prepery);
+    //跟随Pad横屏设置
+    .boot-sm(@element;@prepery);
+    .boot-desktop(@element;@prepery);
+    .boot-lg-md(@element;@prepery);
+    .boot-max(@element;@prepery);
+    /////////////////////////////////
+  }
+}
+
+//横向可见性-plus横屏，xs-480:手机竖屏最小值
+//@screen-xpmin:                  590px;//xp 手机横屏
+//@screen-xpmax:                  767px;//
+//
+.visible-vp,
+.visible-dt,
+.visible-xp//plus横屏
+{
+  .responsive-invisibility();
+}
+
+.visible-vp-block,
+.visible-vp-inline,
+.visible-vp-inline-block,
+.visible-dt-block,
+.visible-dt-inline,
+.visible-dt-inline-block,
+.visible-xp-block,
+.visible-xp-inline,
+.visible-xp-inline-blockk{
+  display: none !important;
+}
+
+.visible-xp {
+  //
+  @media (max-width: @screen-xpmax) and (min-width:@screen-xpmin) {
+    .responsive-visibility();
+  }
+}
+.visible-xp-block {
+  @media (max-width: @screen-xpmax) and (min-width:@screen-xpmin) {
+    display: block !important;
+  }
+}
+.visible-xp-inline {
+  @media (max-width: @screen-xpmax) and (min-width:@screen-xpmin) {
+    display: inline !important;
+  }
+}
+.visible-xp-inline-block {
+  @media (max-width: @screen-xpmax) and (min-width:@screen-xpmin) {
+    display: inline-block !important;
+  }
+}
+
+.visible-vp {
+  @media (max-width: @screen-vertical-max) and (min-width:@screen-vertical-min) {
+    .responsive-visibility();
+  }
+}
+.visible-vp-block {
+  @media (max-width: @screen-vertical-max) and (min-width:@screen-vertical-min) {
+    display: block !important;
+  }
+}
+.visible-vp-inline {
+  @media (max-width: @screen-vertical-max) and (min-width:@screen-vertical-min) {
+    display: inline !important;
+  }
+}
+.visible-vp-inline-block {
+  @media (max-width: @screen-vertical-max) and (min-width:@screen-vertical-min) {
+    display: inline-block !important;
+  }
+}
+
+
+.hidden-vp {
+  @media (max-width: @screen-vertical-max) and (min-width:@screen-vertical-min) {
+    .responsive-invisibility();
+  }
+}

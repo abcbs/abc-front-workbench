@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Javascript Base OOP</title>
+</head>
+<body>
+  <div id="scroll">Hello World</div>
+<script>
+   /**
+  function F() {}
+  alert(F.prototype.constructor === F); // true
+
+
+  function F() {}
+  F.prototype = {};
+  alert(F.prototype.constructor === F); // false
+  alert(F.prototype.constructor === Object); // true
+
+
+  function F() {}
+  F.prototype = {
+    constructor: F,
+    method1: function(){
+
+    }
+  };
+  alert(F.prototype.constructor === F); // true
+ var f=new F();
+  console.log("Over");
+
+
+  function F() {}
+  F.prototype.method1 = function() {};
+  alert(F.prototype.constructor === F); // true
+
+  function Foo() {}
+  var foo = new Foo();
+  alert(foo.__proto__ === Foo.prototype); // true，
+  alert(Foo.prototype.__proto__ === Object.prototype); // true
+
+  alert(Foo.__proto__ === Object.prototype); // false
+  alert(Foo.__proto__ === Function.prototype); // true
+
+  alert(Function.__proto__ === Function.prototype); // true
+  alert(Function.prototype.__proto__ === Object.prototype); // true
+
+  function Animal(name) {
+    this.name = name;
+    this.sleep = function() {
+        alert(this.name + ' sleep');
+    };
+  }
+  var a1 = new Animal('不高兴');
+  a1.sleep
+
+
+  function Animal() {
+    alert('Animal init');
+  }
+  Animal.prototype.sleep = function() {
+      alert('Animal sleep');
+  };
+  var a1 = new Animal(); // alert Animal init
+  a1.sleep(); // alert Animal sleep
+
+
+  function Cat() {
+    alert('Cat init');
+  }
+
+  Cat.prototype = Animal.prototype;
+  Cat.prototype.sleep = function() {
+      alert('Cat sleep');
+  };
+  var c2 = new Cat(); // alert Cat init
+  c2.sleep(); // alert Cat sleep
+  a1.sleep(); // alert Cat sleep，
+
+
+  function Cat() {
+    alert('Cat init');
+  }
+  function Empty() {}
+  Empty.prototype = Animal.prototype;
+
+  Cat.prototype = new Empty();
+  Cat.prototype.constructor = Cat;
+  Cat.prototype.sleep = function() {
+      alert('Cat sleep');
+  };
+  var c2 = new Cat(); // alert Cat init
+  c2.sleep(); // alert Cat sleep
+  a1.sleep(); // alert Animal sleep
+
+
+  var TemplateClass = function() {};
+  function chain(object) {
+    TemplateClass.prototype = object;
+    var result = new TemplateClass();
+    TemplateClass.prototype = null;
+    return result;
+  }
+
+  function Animal(name, color) {
+      this.name = name;
+      this.color = color;
+  }
+  Animal.prototype.sleep = function() {
+      alert(this.name + ' sleep');
+  };
+
+  var a1 = new Animal('倒霉熊', 'white');
+  a1.sleep(); // 倒霉熊 sleep
+
+  function Cat() {
+      // 通过调用父类的构造函数实现初始化
+      Animal.apply(this, arguments);
+  }
+  Cat.prototype = chain(Animal.prototype);
+  Cat.prototype.constructor = Cat;
+  Cat.prototype.greenEye = true;
+  Cat.prototype.mew = function() {
+      alert(this.name + ' mew');
+  };
+
+  var c2 = new Cat('没头脑', 'red');
+  c2.mew(); // 没头脑 mew
+  c2.sleep(); // 没头脑 sleep
+  alert(c2.greenEye); // true
+
+  function PersianCat() {
+      Cat.apply(this, arguments);
+  }
+  PersianCat.prototype = chain(Cat.prototype);
+  PersianCat.prototype.constructor = PersianCat;
+  PersianCat.prototype.name = 'persian cat'; // 在原型中声明name属性
+  PersianCat.prototype.blueEye = true;
+  PersianCat.prototype.mew = function() {
+  // 重写方法并不一定要完全覆写，也可以调用父类方法，执行父类细节之后实现更多细节
+      Cat.prototype.mew.call(this);
+      alert(this.name + ' miaow');
+  };
+
+  var p3 = new PersianCat('不高兴', 'yellow');
+  p3.mew(); // 不高兴 mew，不高兴 miaow
+  p3.sleep(); // 不高兴 sleep
+  alert(p3.greenEye); // true
+  alert(p3.blueEye); // true
+  alert(p3.__proto__.name); // 输出persian cat，本地name属性赋值之后，并不会覆盖prototype中name属性的值
+
+
+  var TemplateClass = function() {},
+    chain = Object.create || function(object) {
+        TemplateClass.prototype = object;
+        var result = new TemplateClass();
+        TemplateClass.prototype = null;
+        return result;
+    };
+
+  function extend(SubClass, SuperClass, overrides) {
+      var subProto, name;
+      SuperClass = SuperClass || Object;
+      SubClass.prototype = chain(SuperClass.prototype);
+      subProto = SubClass.prototype;
+      subProto.constructor = SubClass;
+      if (overrides) {
+          for (name in overrides) {
+              if (overrides.hasOwnProperty(name)) {
+                  subProto[name] = overrides[name];
+              }
+          }
+      }
+  }
+
+  function Animal(name, color) {
+    this.name = name;
+    this.color = color;
+  }
+  extend(Animal, Object, {
+      sleep: function() {
+          alert(this.name + ' sleep');
+      }
+  });
+
+  var a1 = new Animal('倒霉熊', 'white');
+  a1.sleep(); // 倒霉熊 sleep
+
+  function Cat() {
+      Animal.apply(this, arguments);
+  }
+  extend(Cat, Animal, {
+      greenEye: true,
+      mew: function() {
+          alert(this.name + ' mew');
+      }
+  });
+
+  var c2 = new Cat('没头脑', 'red');
+  c2.mew(); // 没头脑 mew
+  c2.sleep(); // 没头脑 sleep
+  alert(c2.greenEye); // true
+
+  function PersianCat() {
+      Cat.apply(this, arguments);
+  }
+  extend(PersianCat, Cat, {
+      name: 'persian cat',
+      blueEye: true,
+      mew: function() {
+          Cat.prototype.mew.call(this);
+          alert(this.name + ' miaow');
+      }
+  });
+
+  var p3 = new PersianCat('不高兴', 'yellow');
+  p3.mew(); // 不高兴 mew，不高兴 miaow
+  p3.sleep(); // 不高兴 sleep
+  alert(p3.greenEye); // true
+  alert(p3.blueEye); // true
+
+
+  **/
+/**
+  var Cat = {
+name: "大毛",
+makeSound: function(){ alert("喵喵喵"); },
+setName: function( n){ name=n; }
+ };
+var cat1 = Object.create(Cat);
+ alert(cat1.name); // 大毛
+ cat1.makeSound(); // 喵喵喵
+
+ var cat2 = Object.create(Cat);
+Cat.setName('test');
+ alert(cat2.name); // 大毛
+ cat1.makeSound(); // 喵喵喵
+  alert(cat1.name); // 大毛
+**/
+
+/**
+var Cat = {
+   createNew: function(){
+     var cat = {};
+     cat.name = "damang";
+     cat.makeSound = function(){ alert("miao miao miao, my is "+cat.name); };
+      cat.setName= function(n){ cat.name=n; };
+     return cat;
+   }// createNew over
+ };
+
+
+ var cat1 = Cat.createNew();
+ cat1.makeSound();
+ cat1.setName('ttttt');
+ cat1.makeSound();
+
+ var cat2 = Cat.createNew();
+ cat2.makeSound();
+ cat2.setName('2222222');
+ cat1.makeSound();
+
+ cat2.makeSound();
+
+  var TemplateClass = function() {},
+  chain = Object.create || function(object) {
+   TemplateClass.prototype = object;
+   var result = new TemplateClass();
+   TemplateClass.prototype = null;
+   return result;
+  };
+
+  function extend(SubClass, SuperClass, overrides) {
+   var subProto, name;
+   SuperClass = SuperClass || Object;
+   SubClass.prototype = chain(SuperClass.prototype);
+   subProto = SubClass.prototype;
+   subProto.constructor = SubClass;
+   if (overrides) {
+       for (name in overrides) {
+           if (overrides.hasOwnProperty(name)) {
+               subProto[name] = overrides[name];
+           }
+       }
+   }
+  }
+
+ function Animal(name, color) {
+  this.name = name;
+  this.color = color;
+ }
+ extend(Animal, Object, {
+  sleep: function() {
+      alert(this.name + ' sleep');
+  }
+ });
+
+ var a1 = new Animal('daomeixing', 'white');
+ a1.sleep();//daomeixing sleep
+
+ function Cat() {
+  Animal.apply(this, arguments);
+ }
+ extend(Cat, Animal, {
+  greenEye: true,
+  mew: function() {
+      alert(this.name + ' mew');
+  }
+ });
+
+ var c2 = new Cat('nobrain', 'red');
+ c2.mew(); // nobrain mew
+ c2.sleep(); // nobrain sleep
+ alert(c2.greenEye); // true
+
+ function PersianCat() {
+  Cat.apply(this, arguments);
+ }
+ extend(PersianCat, Cat, {
+  name: 'persian cat',
+  blueEye: true,
+  mew: function() {
+       Cat.prototype.mew.call(this);
+      alert(this.name + ' miaow');
+  }
+ });
+
+ var p3 = new PersianCat('nohappy', 'yellow');
+ p3.mew(); // nohappy mew，nohappy miaow
+ p3.sleep(); // nohappy sleep
+ alert(p3.greenEye); // true
+ alert(p3.blueEye); // true
+**/
+/**
+  function Person(name,age){//
+       this.name=name;//
+       this.age=age;//
+       this.sayhello=function(){
+        alert(this.name)
+      };
+   }
+  function Print(){//显示类的属性
+      this.funcName="Print";
+      this.show=function(){
+           var msg=[];
+           for(var key in this){
+               if(typeof(this[key])!="function"){
+                   msg.push([key,":",this[key]].join(""));
+               }
+           }
+           alert(msg.join(" "));
+       };
+  }
+  function Student(name,age,grade,school){//
+    Person.apply(this,arguments);//
+    Print.apply(this,arguments);
+    this.grade=grade;//
+    this.school=school;//
+  }
+  var p1=new Person("卜开化",80);
+  p1.sayhello();
+  var s1=new Student("白云飞",40,9,"岳麓书院");
+  s1.show();
+  s1.sayhello();
+  alert(s1.funcName)
+
+
+  /**
+
+  function  Parent(name){
+        this.name=name;
+        this.sayParent=function(){
+            alert("Parent:"+this.name);
+        }
+    }
+    function  Child(name,age){
+        this.tempMethod=Parent;
+        this.tempMethod(name);
+        this.age=age;
+        this.sayChild=function(){
+            alert("Child:"+this.name+"age:"+this.age);
+        }
+    }
+    var parent=new Parent("江剑臣");
+    parent.sayParent(); //输出：“Parent:江剑臣”
+    var child=new Child("李鸣",24); //输出：“Child:李鸣 age:24”
+    child.sayChild();
+
+
+      function  Person(name,age,love){
+        this.name=name;
+        this.age=age;
+        this.love=love;
+        this.say=function say(){
+          alert("姓名："+name);
+        }
+    }
+    //call方式
+    function Student(name,age){
+        Person.call(this,name,age);
+    }
+
+    //apply方式
+    function Teacher(name,love){
+        Person.apply(this,[name,love]);
+        //Person.apply(this,arguments); //跟上句一样的效果，arguments
+    }
+
+    //call与aplly的异同：
+    //1,第一个参数this都一样,指当前对象
+    //2,第二个参数不一样：call的是一个个的参数列表；apply的是一个数组（arguments也可以）
+    var per=new Person("武凤楼",25,"魏荧屏"); //输出：“武凤楼”
+    per.say();
+    var stu=new Student("曹玉",18);//输出：“曹玉”
+    stu.say();
+    var tea=new Teacher("秦杰",16);//输出：“秦杰”
+    tea.say();
+    **/
+    /**
+    var myObj={};
+    myObj.propertyA='value';
+    myObj.propertyB='value';
+    myObj.methodA=function(){};
+    myObj.methodB=function(){};
+    **/
+    /**
+    var myObj={
+      propertyA:'value',
+      propertyB:'value',
+      methodA:function(){},
+      methodB:function(){}
+    }
+    console.log(Math.max(5,8));//8
+    console.log(Math.max(5,7,9,3,1,6));//9
+    var arr=[5,7,9,1];
+    var maxVar=Math.max(arr);
+    console.log(maxVar);//这样却是不行的。NaN
+    maxVar=Math.max.apply(null,arr);
+    console.log(maxVar);
+    **/
+
+    /**
+    var Browser=function(){};
+    Browser.prototype.run=function(){
+     alert("I'm Gecko,a kernel of firefox");
+    }
+    var Bro = new Browser();
+    Bro.run();
+    **/
+
+    /**
+    function Person(name){
+      this.name=name;
+    }
+
+    Person.prototype.printName=function(){
+      alert(this.name);
+    }
+    Person.printNameClass=function(){
+      alert(this.name);
+    }
+    var person1=new Person('Byron');
+    var person2=new Person('Frank');
+    person1.printName();
+    person2.printName();
+    //person1.printNameClass();
+    Person.printNameClass();
+    var isEq=person1.printName
+      ==person2.printName;
+    console.log(isEq);//true
+    **/
+
+    /**
+    function Shape(){
+      this.name="shape";
+      this.toString=function(){
+       return this.name;
+      }
+     }
+
+     function TwoShape(){
+      this.name="2 shape";
+     }
+     function Triangle(side,height){
+      this.name="Triangle";
+      this.side=side;
+      this.height=height;
+      this.getArea=function(){
+       return this.side*this.height/2;
+      }
+     }
+
+     TwoShape.prototype=new Shape();
+     Triangle.prototype = new TwoShape();
+     TwoShape.prototype.constructor=TwoShape;
+     Triangle.prototype.constructor=Triangle;
+
+      var my = new Triangle(5,10);
+      my.getArea();
+      my.toString();//Triangle
+      my.constructor;//Triangle(side,height)
+      console.log("Over");
+    **/
+    /**
+    function Person(name){
+      this.name = name;//设置对象属性
+    };
+    Person.prototype.company = "Microsoft";//设置原型的属性
+    Person.prototype.SayHello = function(){//原型的方法
+      alert("Hello,I'm "+ this.name+ " of " + this.company);
+    };
+    var BillGates = new Person("BillGates");//创建person对象
+    BillGates.SayHello();//继承了原型的内容，输出"Hello,I'm BillGates of Microsoft"
+    var Jobs = new Person("Jobs");
+    Jobs.company = "Apple";//设置自己的company属性，掩盖了原型的company属性
+    Jobs.SayHello = function(){
+      alert("Hi,"+this.name + " like " + this.company);
+    };
+    Jobs.SayHello();//自己覆盖的属性和方法，输出"Hi,Jobs like Apple"
+    BillGates.SayHello();//Jobs的覆盖没有影响原型，BillGates还是照样输出
+    **/
+
+    /**
+    //大写，代表构造函数
+    function Box(){
+      //原型属性
+      Box.prototype.name = "trigkit4";
+      Box.prototype.age = "21";
+      //原型方法
+      Box.prototype.run = function(){
+        return this.name + this.age + 'studying';
+      }
+    }
+    var box1 = new Box();
+    //trigkit4,原型里的值
+    alert(box1.name);
+    box1.name = "Lee";
+    //Lee,就近原则
+    alert(box1.name);
+    var box2 = new Box();
+    //trigkit4,原型的值，没有被box1修改
+    alert(box2.name);
+    **/
+
+    /**
+     function Box(){
+      this.name = "Bill";
+     }
+     //原型属性
+     Box.prototype.name = "trigkit4";
+     Box.prototype.age = "21";
+     //原型方法
+     Box.prototype.run = function()
+     {
+         return this.name + this.age + 'studying';
+     }
+     var box1 = new Box();
+     //Bill,原型里的值
+     alert(box1.name);
+     box1.name = "Lee";
+     //Lee,就近原则
+     alert(box1.name);
+
+
+    Function.prototype.forEach = function(object, block, context) {
+      for (var key in object) {
+        if (typeof this.prototype[key] == "undefined") {
+          block.call(context, object[key], key, object);
+        }
+      }
+    };
+   alert(Object.forEach);
+   alert(Function.forEach);
+   alert(Object.forEach === Function.forEach); // true
+     **/
+     /**
+     var person = function(name){
+      this.name = name
+     };
+     person.prototype.getName = function(){
+      return this.name;
+     }
+     var zjh = new person('zhangjiahao');
+     zjh.getName(); //zhangjiahao
+
+     console.log(zjh.__proto__===person.prototype)//true
+     console.log(person.prototype.__proto__===Object.prototype)//true
+     console.log(Object.prototype.__proto__)//null
+     **/
+     
+    var animal = function(){};
+    var dog = function(){};
+    animal.price = 2000;//
+    dog.prototype = animal;
+    var tidy = new dog();
+    console.log(dog. price) //undefined
+    console.log(tidy.price) // 2000
+
+
+    /**
+
+    function T(c) {
+        this.id = "Object";
+        this.dom = document.getElementById("scroll");
+    }
+    T.prototype = {
+        init: function() {
+           //①
+            this.dom.onmouseover = function() {
+                console.log("Over-->"+this.id);
+            }
+           //②
+            this.dom.onmouseout = function() {
+                console.log("Out -->"+this.id);
+            } .bind(this)
+        }
+    };
+
+    (new T()).init();
+
+    function func(name,id) {
+      console.log(name,id,this);
+    }
+    var obj = "Look here";
+    //什么也不加
+    func("    ","-->");
+
+    //使用bind是返回改变上下文this后的函数
+    var a = func.bind(obj, "bind", "-->");
+    a();
+    //使用call是改变上下文this并执行函数
+    var b = func.call(obj, "call", "-->");
+
+    b;
+
+    function f(a,b,c){
+      console.log(a,b,c);
+    }
+
+    var f_Extend = f.bind(null,"extend_A")
+
+    f("A","B","C")  //这里会输出--> A B C
+
+    f_Extend("A","B","C")  //这里会输出--> extend_A A B
+
+    f_Extend("B","C")  //这里会输出--> extend_A B C
+
+    f.call(null,"extend_A") //这里会输出--> extend_A undefined undefined
+
+  //x => { return x * x };
+  var ary = [2,4,6,8];
+
+  //js1.6 Array.filter()方法
+  var otherAry1 = ary.filter((item)=>{return item>4;});
+
+  alert(otherAry1);//输出6，8
+ **/
+/**
+var Cat = {
+   createNew: function(){
+     var cat = {};
+     cat.name = "大毛";
+     cat.makeSound = function(){
+      alert("喵喵喵"+cat.name);
+      };
+     return cat;
+   }// createNew over
+ };
+ var cat1 = Cat.createNew();
+cat1.makeSound();
+ **/
+  </script>
+
+</body>
+</html>

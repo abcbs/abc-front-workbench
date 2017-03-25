@@ -1,0 +1,54 @@
+import React, { Component } from 'react'
+import { title }            from 'react-isomorphic-render'
+import { connect }          from 'react-redux'
+import { Link }             from 'react-router'
+
+import styler from 'react-styling'
+
+import { defineMessages } from 'react-intl'
+import international      from '../../abc-framework/international/internationalize'
+
+import Url  from '../../abc-framework/utils/url'
+import { should_redirect_to } from '../../abc-framework/utils/redirection'
+
+const messages = defineMessages
+({
+	header:
+	{
+		id             : 'error_page.header',
+		description    : 'Generic error page header',
+		defaultMessage : 'An error occured'
+	}
+})
+
+@international()
+export default class Generic_error extends Component
+{
+	render()
+	{
+		const { translate, location } = this.props;
+
+		const markup =
+		(
+			<section className="content error-page">
+				{title(translate(messages.header))}
+
+				<h1>
+					{translate(messages.header)}
+				</h1>
+
+				<Link
+					href={should_redirect_to(location)}
+					className="error-page__page-link">
+
+					{new Url(should_redirect_to(location)).to_relative_url()}
+				</Link>
+			</section>
+		);
+		return markup
+	}
+}
+
+const style = styler
+`
+`

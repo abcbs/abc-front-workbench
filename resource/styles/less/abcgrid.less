@@ -1,0 +1,25 @@
+
+.container-abc {
+ //background-color: red;
+ @media (max-width: @screen-xpmax) and (min-width:@screen-xpmin) {
+  .make-grid(xp);
+ }
+
+ @media (min-width: @screen-dt) and (max-width: @screen-dt-max){
+  .make-grid(dt);
+ }
+
+ @media (min-width: @screen-vertical-min) and (max-width: @screen-vertical-max){
+  .make-grid(vp);
+ }
+}
+
+.make-grid-columns-extents();
+
+.make-grid(xp);
+
+.make-grid(vp);
+
+.make-grid(dt);
+
+
